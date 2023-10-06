@@ -1,6 +1,7 @@
 +++
 title = "Mastering tabi Settings: A Comprehensive Guide"
 date = 2023-09-18
+updated = 2023-10-05
 description = "Discover the many ways you can customise your tabi site."
 
 [taxonomies]
@@ -445,9 +446,7 @@ For more information, including instructions on how to create a custom subset, s
 
 By default, the Atom feed only contains the summary/description of your posts. You can include the entire posts' content by setting `full_content_in_feed = true` in `config.toml`.
 
----
-
-## Comments {#adding-comments}
+### Comments {#adding-comments}
 
 | Page | Section | `config.toml` | Follows Hierarchy | Requires JavaScript |
 |:----:|:-------:|:-------------:|:-----------------:|:-------------------:|
@@ -459,9 +458,40 @@ To enable a system globally (on all pages), set `enabled_for_all_posts = true` i
 
 Read [the docs](/blog/comments/) for more information on the available systems and their setup.
 
+### Analytics
+
+| Page | Section | `config.toml` | Follows Hierarchy | Requires JavaScript |
+|:----:|:-------:|:-------------:|:-----------------:|:-------------------:|
+|  ❌  |   ❌    |      ✅       |         ❌        |         ✅          |
+
+tabi supports 3 privacy-friendly analytics systems: [Plausible](https://plausible.io/), [GoatCounter](https://www.goatcounter.com/) and [Umami](https://umami.is/).
+
+You can set them up in the `[extra.analytics]` section of your `config.toml`.
+
+- `service`: Specifies which analytics service to use. Supported options are `"goatcounter"`, `"umami"`, and `"plausible"`.
+
+- `id`: The unique identifier for your analytics service. This varies based on the service:
+  - For GoatCounter, it's the code chosen during signup. Self-hosted instances don't require this field.
+  - For Umami, it's the website ID.
+  - For Plausible, it's the domain name.
+
+- `self_hosted_url`: Optional. Use this field to specify the URL for self-hosted instances of your chosen analytics service. The base URL differs based on your specific setup. Some examples:
+  - For GoatCounter: `"https://stats.example.com"`
+  - For Umami: `"https://umami.example.com"`
+  - For Plausible: `"https://plausible.example.com"`
+
+An example configuration for non-self-hosted GoatCounter would look like this:
+
+```toml
+[extra.analytics]
+service = "goatcounter"
+id = "tabi"
+self_hosted_url = ""
+```
+
 ---
 
-## Footer Icons
+## Footer
 
 ### Social Media Icons
 
@@ -491,9 +521,21 @@ The icons are from Font Awesome. To see a list of all the available icons, take 
 
 You can add a link to your RSS/Atom feed to the footer with `feed_icon = true`.
 
----
+### Footer Menu
 
-## Metadata
+| Page | Section | `config.toml` | Follows Hierarchy | Requires JavaScript |
+|:----:|:-------:|:-------------:|:-----------------:|:-------------------:|
+|  ❌  |   ❌    |      ✅       |         ❌        |         ❌          |
+
+You can add a menu to the footer with `footer_menu`, which takes a list of menu items. For example:
+
+```toml
+footer_menu = [
+    {url = "about", name = "about", trailing_slash = true},
+    {url = "privacy", name = "privacy", trailing_slash = true},
+    {url = "sitemap.xml", name = "sitemap", trailing_slash = false},
+]
+```
 
 ### Copyright
 
@@ -515,6 +557,10 @@ If you have a multilingual site and want to set different copyright notices for 
 
 1. Set `translate_copyright = true` in `config.toml`.
 2. Add a `copyright` key to the `i18n` files. See the [documentation](/blog/faq-languages/#how-do-i-customise-or-override-a-specific-text-string-on-my-website).
+
+---
+
+## Metadata
 
 ### Reading Time
 

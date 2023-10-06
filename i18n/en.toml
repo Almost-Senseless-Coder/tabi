@@ -3,12 +3,15 @@ date_locale = "en_GB"
 full_stop = "."  # Used at the end of a sentence.
 
 # Menu items.
-# Should match the names in config.extra.menu
+# Should match the names in config.extra.menu and config.extra.footer_menu.
 blog = "blog"
 archive = "archive"
 tags = "tags"
 projects = "projects"
 about = "about"
+contact = "contact"
+privacy = "privacy policy"
+sitemap = "sitemap"
 
 # Navigation.
 read_more = "Read more"
@@ -23,6 +26,7 @@ language_selection = "Language selection"
 toggle_mode = "Toggle $MODE mode"  # $MODE will be replaced by a value (or both) below.
 dark = "dark"
 light = "light"
+reset_mode = "Reset mode to OS default"
 
 # Post metadata.
 draft = "DRAFT"

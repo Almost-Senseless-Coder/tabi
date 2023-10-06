@@ -7,12 +7,15 @@ date_locale = "ja_JP"
 full_stop = "。"  # Used at the end of a sentence.
 
 # Menu items.
-# Should match the names in config.extra.menu
+# Should match the names in config.extra.menu and config.extra.footer_menu.
 blog = "ブログ"
 archive = "アーカイブ"
 tags = "タグ"
 projects = "プロジェクト"
 about = "自己紹介"
+contact = "お問い合わせ"
+privacy = "プライバシーポリシー"
+sitemap = "サイトマップ"
 
 # Navigation.
 read_more = "続きを読む"
@@ -27,6 +30,7 @@ language_selection = "言語選択"
 toggle_mode = "$MODE モードに切り替え"  # $MODE will be replaced by a value (or both) below.
 dark = "暗い"
 light = "明るい"
+reset_mode = "モードをOSデフォルトにリセット"
 
 # Post metadata.
 draft = "ドラフト"
