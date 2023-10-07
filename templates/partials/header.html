@@ -155,4 +155,21 @@
         {%- include "partials/analytics.html" -%}
     {%- endif -%}
 
+    {# Include the relevant files for searching, if desired #}
+    {%- if config.build_search_index and config.build_search_index == true -%}
+        {%- if lang != 'en' -%}
+            <script type="text/javascript" src="{{ get_url(path='lunr.stemmer.support.min.js') | safe }}"></script>
+        {%- endif -%}
+        {%- set search_file_exists = load_data(path='static/lunr.' ~ lang ~ '.min.js', required=false) -%}
+        {%- if search_file_exists -%}
+            <script type="text/javascript" src="{{ get_url(path='lunr.' ~ lang ~ '.min.js') | safe }}"></script>
+        {%- else -%}
+            {%- if config.search.index_format and config.search.index_format == 'elasticlunr_json' -%}
+                {%- set index_path = get_url(path='search_index.' ~ config.default_language ~ '.min.json') | safe -%}
+            {%- else -%}
+                {%- set index_path = get_url(path='search_index.' ~ config.default_language ~ '.min.js') | safe -%}
+            {%- endif -%}
+            <script type="text/javascript" src="{{ index_path }}"></script>
+        {%- endif -%}
+    {%- endif -%}
 </head>
